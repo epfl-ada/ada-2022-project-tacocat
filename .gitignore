@@ -1,6 +1,11 @@
 /.DS_Store
 .vscode
 
+# Initial Datasets
+data/imdb/*.tsv.gz
+data/cmu_movie_summary_corpus/*.tsv
+data/cmu_movie_summary_corpus/*.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
