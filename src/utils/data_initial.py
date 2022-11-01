@@ -31,14 +31,18 @@ COLUMNS_IMDB_TITLE_BASICS = ['title_id', 'type', 'primary_title', 'original_titl
                              'is_adult', 'start_year', 'end_year', 'runtime_minutes', 'genres']
 COLUMNS_IMDB_TITLE_CREW = ['title_id', 'directors', 'writers']
 COLUMNS_IMDB_TITLE_RATINGS = ['title_id', 'average_rating', 'num_votes']
+COLUMNS_IMDB_TITLE_PRINCIPALS = [
+    'title_id', 'ordering', 'persone_name_id', 'category', 'job', 'character']
 
 DTYPES_CMU_CHAR_METADATA = [int, pd.StringDtype(), object, pd.StringDtype(), object, CATEGORIES_GENDER, float, pd.StringDtype(
 ), pd.StringDtype(), pd.Int64Dtype(), pd.StringDtype(), pd.StringDtype(), pd.StringDtype()]
 DTYPES_CMU_MOVIE_METADATA = [int, pd.StringDtype(
-), pd.StringDtype(), object, float, float, object, object]
+), pd.StringDtype(), object, float, float, object, object, object]
 DTYPES_CMU_NAME_CLUSTERS = [pd.StringDtype(), pd.StringDtype()]
 DTYPES_CMU_PLOT_SUMMARIES = [pd.StringDtype(), pd.StringDtype()]
 DTYPES_CMU_TVTROPES_CLUSTERS = [pd.StringDtype(), object]
+DTYPES_IMDB_TITLE_PRINCIPALS = [pd.StringDtype(), int, pd.StringDtype(
+), pd.StringDtype(), pd.StringDtype(), pd.StringDtype()]
 
 DTYPES_IMDB_NAMES = [pd.StringDtype(), pd.StringDtype(
 ), pd.Int16Dtype(), pd.Int16Dtype(), object, object]
@@ -86,7 +90,7 @@ def load_cmu_movie_metadata():
     path = PATH_DATA + FOLDERNAME_CMU + 'movie.metadata.tsv'
 
     df = pd.read_csv(path, sep='\t', header=None,
-                     names=COLUMNS_CMU_MOVIE_METADATA, type=dtype_map)
+                     names=COLUMNS_CMU_MOVIE_METADATA, dtype=dtype_map)
 
     # data cleaning
     df.release_date.replace("1010-12-02", "2010-12-02", inplace=True)
@@ -202,4 +206,21 @@ def load_imdb_title_rating():
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_RATINGS,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB)
 
+    return df
+
+
+def load_imdb_title_principals():
+    '''
+    Load the title principals data from the imdb dataset.
+    Does the preliminary data cleaning.
+
+    :return: data in dataframe
+    '''
+    dtype_map = generate_dtype_map(
+        COLUMNS_IMDB_TITLE_PRINCIPALS, DTYPES_IMDB_TITLE_PRINCIPALS)
+    path = PATH_DATA + FOLDERNAME_IMDB + 'title.principals.tsv.gz'
+
+    df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_PRINCIPALS,
+                     dtype=dtype_map, na_values=NA_VALUES_IMDB, low_memory=False)
+                     
     return df
