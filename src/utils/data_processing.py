@@ -5,8 +5,6 @@ File containing functions useful for data processing and cleaning
 import pandas as pd
 import numpy as np
 
-SOME_CONSTANT = 0
-
 def map_to_nan(df: pd.DataFrame, val: any, columns: list[str]):
     '''
     Map values of columns to NaN.
