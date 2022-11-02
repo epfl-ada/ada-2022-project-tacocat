@@ -9,3 +9,7 @@
 ## Get initial datasets
 
 Follow the READMEs in [data](../data/) to download the initial datasets.
+
+## requirements.txt
+
+Use the `pireqsnb` python library to generate it.
