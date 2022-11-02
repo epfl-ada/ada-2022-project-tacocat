@@ -11,7 +11,7 @@ from utils.data_processing import map_to_nan, generate_dtype_map
 CATEGORIES_GENDER = pd.CategoricalDtype(categories=['M', 'F'])
 NA_VALUES_IMDB = ['\\N']
 
-PATH_DATA = '../data/'
+PATH_DATA_INIT = '../data/'
 
 FOLDERNAME_CMU = 'cmu_movie_summary_corpus/'
 FOLDERNAME_IMDB = 'imdb/'
@@ -62,7 +62,7 @@ def load_cmu_character_metadata():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_CMU_CHAR_METADATA, DTYPES_CMU_CHAR_METADATA)
-    path = PATH_DATA + FOLDERNAME_CMU + 'character.metadata.tsv'
+    path = PATH_DATA_INIT + FOLDERNAME_CMU + 'character.metadata.tsv'
 
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_CHAR_METADATA)
@@ -87,7 +87,7 @@ def load_cmu_movie_metadata():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_CMU_MOVIE_METADATA, DTYPES_CMU_MOVIE_METADATA)
-    path = PATH_DATA + FOLDERNAME_CMU + 'movie.metadata.tsv'
+    path = PATH_DATA_INIT + FOLDERNAME_CMU + 'movie.metadata.tsv'
 
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_MOVIE_METADATA, dtype=dtype_map)
@@ -110,7 +110,7 @@ def load_cmu_name_clusters():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_CMU_NAME_CLUSTERS, DTYPES_CMU_NAME_CLUSTERS)
-    path = PATH_DATA + FOLDERNAME_CMU + 'name.clusters.txt'
+    path = PATH_DATA_INIT + FOLDERNAME_CMU + 'name.clusters.txt'
 
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_NAME_CLUSTERS, dtype=dtype_map)
@@ -127,7 +127,7 @@ def load_cmu_tvtropes_clusters():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_CMU_TVTROPES_CLUSTERS, DTYPES_CMU_TVTROPES_CLUSTERS)
-    path = PATH_DATA + FOLDERNAME_CMU + 'tvtropes.clusters.txt'
+    path = PATH_DATA_INIT + FOLDERNAME_CMU + 'tvtropes.clusters.txt'
 
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_TVTROPES_CLUSTERS, dtype=dtype_map)
@@ -143,7 +143,7 @@ def load_imdb_name_basics():
     :return: data in dataframe
     '''
     dtype_map = generate_dtype_map(COLUMNS_IMDB_NAMES, DTYPES_IMDB_NAMES)
-    path = PATH_DATA + FOLDERNAME_IMDB + 'name.basics.tsv.gz'
+    path = PATH_DATA_INIT + FOLDERNAME_IMDB + 'name.basics.tsv.gz'
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_NAMES,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB, low_memory=False)
@@ -160,7 +160,7 @@ def load_imdb_title_basics():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_IMDB_TITLE_BASICS, DTYPES_IMDB_TITLE_BASICS)
-    path = PATH_DATA + FOLDERNAME_IMDB + 'title.basics.tsv.gz'
+    path = PATH_DATA_INIT + FOLDERNAME_IMDB + 'title.basics.tsv.gz'
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_BASICS,
                      na_values=NA_VALUES_IMDB, dtype=dtype_map, low_memory=False)
@@ -184,7 +184,7 @@ def load_imdb_title_crew():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_IMDB_TITLE_CREW, DTYPES_IMDB_TITLE_CREW)
-    path = PATH_DATA + FOLDERNAME_IMDB + 'title.crew.tsv.gz'
+    path = PATH_DATA_INIT + FOLDERNAME_IMDB + 'title.crew.tsv.gz'
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_CREW,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB)
@@ -201,7 +201,7 @@ def load_imdb_title_rating():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_IMDB_TITLE_RATINGS, DTYPES_IMDB_TITLE_RATINGS)
-    path = PATH_DATA + FOLDERNAME_IMDB + 'title.ratings.tsv.gz'
+    path = PATH_DATA_INIT + FOLDERNAME_IMDB + 'title.ratings.tsv.gz'
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_RATINGS,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB)
@@ -218,7 +218,7 @@ def load_imdb_title_principals():
     '''
     dtype_map = generate_dtype_map(
         COLUMNS_IMDB_TITLE_PRINCIPALS, DTYPES_IMDB_TITLE_PRINCIPALS)
-    path = PATH_DATA + FOLDERNAME_IMDB + 'title.principals.tsv.gz'
+    path = PATH_DATA_INIT + FOLDERNAME_IMDB + 'title.principals.tsv.gz'
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_PRINCIPALS,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB, low_memory=False)
