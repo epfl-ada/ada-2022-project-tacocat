@@ -5,8 +5,9 @@ File containing functions for loading the initial, unprocessed data
 
 import pandas as pd
 import numpy as np
+import ast
 
-from utils.data_processing import map_to_nan, generate_dtype_map
+from utils.data_processing import *
 
 CATEGORIES_GENDER = pd.CategoricalDtype(categories=['M', 'F'])
 NA_VALUES_IMDB = ['\\N']
@@ -97,6 +98,9 @@ def load_cmu_movie_metadata() -> pd.DataFrame:
     map_to_nan(df, 0, ['runtime'])
 
     df.release_date = pd.to_datetime(df.release_date)
+    df.languages = df.languages.apply(parse_cmu_dict)
+    df.countries = df.countries.apply(parse_cmu_dict)
+    df.genres = df.genres.apply(parse_cmu_dict)
 
     return df
 
@@ -132,6 +136,8 @@ def load_cmu_tvtropes_clusters() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_TVTROPES_CLUSTERS, dtype=dtype_map)
 
+    df.char_actor_map = df.char_actor_map.apply(ast.literal_eval)
+
     return df
 
 
@@ -147,6 +153,11 @@ def load_imdb_name_basics() -> pd.DataFrame:
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_NAMES,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB, low_memory=False)
+
+    df.primary_profession = df.primary_profession.map(
+        parse_imdb_list, na_action='ignore')
+    df.known_for_titles = df.known_for_titles.map(
+        parse_imdb_list, na_action='ignore')
 
     return df
 
@@ -172,6 +183,8 @@ def load_imdb_title_basics() -> pd.DataFrame:
         lambda r: np.NaN if r in badvals else r).astype(pd.Int64Dtype())
     map_to_nan(df, 0, ['runtime_minutes'])
 
+    df.genres = df.genres.map(parse_imdb_list, na_action='ignore')
+
     return df
 
 
@@ -188,6 +201,9 @@ def load_imdb_title_crew() -> pd.DataFrame:
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_CREW,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB)
+
+    df.directors = df.directors.map(parse_imdb_list, na_action='ignore')
+    df.writers = df.writers.map(parse_imdb_list, na_action='ignore')
 
     return df
 
@@ -221,6 +237,8 @@ def load_imdb_title_principals() -> pd.DataFrame:
     path = PATH_DATA_INIT + FOLDERNAME_IMDB + 'title.principals.tsv.gz'
 
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_PRINCIPALS,
-                     dtype=dtype_map, na_values=NA_VALUES_IMDB, low_memory=False)
-                     
+                     dtype=dtype_map, na_values=NA_VALUES_IMDB)
+
+    df.character = df.character.map(ast.literal_eval, na_action='ignore')
+
     return df
