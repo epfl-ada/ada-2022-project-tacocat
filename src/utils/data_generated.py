@@ -8,7 +8,7 @@ PATH_DATA_GEN = '../generated/'
 
 FILENAME_ETHNICITIES = 'ethnicities'
 
-def load_ethnicities():
+def load_ethnicities() -> pd.DataFrame:
     '''
     Load the ethnicities data.
 

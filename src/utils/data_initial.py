@@ -53,7 +53,7 @@ DTYPES_IMDB_TITLE_RATINGS = [
     pd.StringDtype(), pd.Float32Dtype(), pd.Int32Dtype()]
 
 
-def load_cmu_character_metadata():
+def load_cmu_character_metadata() -> pd.DataFrame:
     '''
     Load character metadata from the cmu dataset.
     Does the preliminary data cleaning.
@@ -78,7 +78,7 @@ def load_cmu_character_metadata():
     return df
 
 
-def load_cmu_movie_metadata():
+def load_cmu_movie_metadata() -> pd.DataFrame:
     '''
     Load movie metadata from the cmu dataset.
     Does the preliminary data cleaning.
@@ -101,7 +101,7 @@ def load_cmu_movie_metadata():
     return df
 
 
-def load_cmu_name_clusters():
+def load_cmu_name_clusters() -> pd.DataFrame:
     '''
     Load the name cluster data from the cmu dataset.
     Does the preliminary data cleaning.
@@ -118,7 +118,7 @@ def load_cmu_name_clusters():
     return df
 
 
-def load_cmu_tvtropes_clusters():
+def load_cmu_tvtropes_clusters() -> pd.DataFrame:
     '''
     Load the tvtropes clusters data from the cmu dataset.
     Does the preliminary data cleaning.
@@ -135,7 +135,7 @@ def load_cmu_tvtropes_clusters():
     return df
 
 
-def load_imdb_name_basics():
+def load_imdb_name_basics() -> pd.DataFrame:
     '''
     Load the name basics data from the imdb dataset.
     Does the preliminary data cleaning.
@@ -151,7 +151,7 @@ def load_imdb_name_basics():
     return df
 
 
-def load_imdb_title_basics():
+def load_imdb_title_basics() -> pd.DataFrame:
     '''
     Load the title basics data from the imdb dataset.
     Does the preliminary data cleaning.
@@ -175,7 +175,7 @@ def load_imdb_title_basics():
     return df
 
 
-def load_imdb_title_crew():
+def load_imdb_title_crew() -> pd.DataFrame:
     '''
     Load the title crew data from the imdb dataset.
     Does the preliminary data cleaning.
@@ -192,7 +192,7 @@ def load_imdb_title_crew():
     return df
 
 
-def load_imdb_title_rating():
+def load_imdb_title_rating() -> pd.DataFrame:
     '''
     Load the title ratings data from the imdb dataset.
     Does the preliminary data cleaning.
@@ -209,7 +209,7 @@ def load_imdb_title_rating():
     return df
 
 
-def load_imdb_title_principals():
+def load_imdb_title_principals() -> pd.DataFrame:
     '''
     Load the title principals data from the imdb dataset.
     Does the preliminary data cleaning.
