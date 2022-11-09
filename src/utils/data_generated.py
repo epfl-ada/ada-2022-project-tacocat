@@ -8,6 +8,7 @@ PATH_DATA_GEN = '../generated/'
 
 FILENAME_ETHNICITIES = 'ethnicities'
 FILENAME_MOVIE_METADATA = 'movie_metadata'
+FILENAME_TITLE_CREW = 'title_crew'
 
 def load_ethnicities() -> pd.DataFrame:
     '''
@@ -24,3 +25,11 @@ def load_movie_metadata() -> pd.DataFrame:
     :return: data in a datafrmae
     '''
     return pd.read_pickle(PATH_DATA_GEN + FILENAME_MOVIE_METADATA)
+
+def load_title_crew() -> pd.DataFrame:
+    '''
+    Load the title crew data.
+
+    :return: data in a datafrmae
+    '''
+    return pd.read_pickle(PATH_DATA_GEN + FILENAME_TITLE_CREW)
