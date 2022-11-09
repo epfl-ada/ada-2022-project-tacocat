@@ -1,5 +1,6 @@
 ## Repository Structure and Usage
 
+```bash
 ├── data
 │   ├── cmu_movie_summary_corpus
 │   └── imdb
@@ -16,6 +17,7 @@
 │       ├── data_processing.py
 │       └── freebase.py
 └── temp
+```
 
 - [data](../data/) contains the initial datasets used for this project.
 - [docs](../docs/) contains various documentation.
@@ -27,6 +29,7 @@
 - [temp](../temp/) may be used to store temporary data
 
 The essentials to work on the project are:
+
 - [generate_data.ipynb](../src/generate_data.ipynb) contains the pipeline used to generate the data for analysis in the project.
 - [data_generated.py](../src/utils/data_generated.py) contains the functions used to load the data used in the project. This data should only be loaded using those functions.
 
