@@ -68,8 +68,10 @@ def load_cmu_character_metadata() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_CHAR_METADATA)
 
-    # data cleaning
+    # fix invalid dates
     df.release_date.replace("1010-12-02", "2010-12-02", inplace=True)
+
+    # map actor age of 0 to NaN, since that makes more sense
     map_to_nan(df, 0, ['actor_age_at_release'])
 
     df = df.astype(dtype_map)
@@ -93,14 +95,19 @@ def load_cmu_movie_metadata() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_MOVIE_METADATA, dtype=dtype_map)
 
-    # data cleaning
+    # fix invalid dates
     df.release_date.replace("1010-12-02", "2010-12-02", inplace=True)
+    
+    # map runtime of 0 to NaN, since that makes more sense
     map_to_nan(df, 0, ['runtime'])
 
-    df.release_date = pd.to_datetime(df.release_date)
+    # parse dictionnary strings
     df.languages = df.languages.apply(parse_cmu_dict)
     df.countries = df.countries.apply(parse_cmu_dict)
     df.genres = df.genres.apply(parse_cmu_dict)
+
+    # parse datetime
+    df.release_date = pd.to_datetime(df.release_date)
 
     return df
 
@@ -136,6 +143,7 @@ def load_cmu_tvtropes_clusters() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', header=None,
                      names=COLUMNS_CMU_TVTROPES_CLUSTERS, dtype=dtype_map)
 
+    # parse dictionnary strings
     df.char_actor_map = df.char_actor_map.apply(ast.literal_eval)
 
     return df
@@ -154,6 +162,7 @@ def load_imdb_name_basics() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_NAMES,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB, low_memory=False)
 
+    # parse list strings
     df.primary_profession = df.primary_profession.map(
         parse_imdb_list, na_action='ignore')
     df.known_for_titles = df.known_for_titles.map(
@@ -176,11 +185,13 @@ def load_imdb_title_basics() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_BASICS,
                      na_values=NA_VALUES_IMDB, dtype=dtype_map, low_memory=False)
 
-    # data cleaning
+    # remove invalid runtime values
     badvals = ['Reality-TV', 'Talk-Show', 'Documentary',
                'Game-Show', 'Animation,Comedy,Family', 'Game-Show,Reality-TV']
     df.runtime_minutes = df.runtime_minutes.map(
         lambda r: np.NaN if r in badvals else r).astype(pd.Int64Dtype())
+    
+    # map runtime of 0 to NaN, since that makes more sense
     map_to_nan(df, 0, ['runtime_minutes'])
 
     df.genres = df.genres.map(parse_imdb_list, na_action='ignore')
@@ -202,6 +213,7 @@ def load_imdb_title_crew() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_CREW,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB)
 
+    # parse dictionnary strings
     df.directors = df.directors.map(parse_imdb_list, na_action='ignore')
     df.writers = df.writers.map(parse_imdb_list, na_action='ignore')
 
@@ -239,6 +251,7 @@ def load_imdb_title_principals() -> pd.DataFrame:
     df = pd.read_csv(path, sep='\t', skiprows=1, names=COLUMNS_IMDB_TITLE_PRINCIPALS,
                      dtype=dtype_map, na_values=NA_VALUES_IMDB)
 
+    # parse dictionnary strings
     df.character = df.character.map(ast.literal_eval, na_action='ignore')
 
     return df

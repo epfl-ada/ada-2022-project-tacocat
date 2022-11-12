@@ -22,6 +22,7 @@
 - [data](../data/) contains the initial datasets used for this project.
 - [docs](../docs/) contains various documentation.
 - [generated](../generated/) contains the processed data, ready for analysis.
+- [generated/legacy](../generated/legacy/) contains generated data, no longer used for the project but still relevant for something (e.g. a milestone submission)
 - [requirements.txt](../requirements.txt) contains the required python libraries for this project.
 - [results](../results/) contains the results from our analysis.
 - [src](../src/) contains the projects code.

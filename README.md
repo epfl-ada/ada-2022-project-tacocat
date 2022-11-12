@@ -11,7 +11,13 @@ It's no secret that knowing the right people in the film industry is very import
     - Which people are connecting clusters? What makes them special?
 - As representation and diversity have more space in conversations, do we see this in the film industry?
 
-## Additional datasets used
+## Additional Datasets Used
+
+In addition to the [CMU movie dataset](http://www.cs.cmu.edu/~ark/personas/), we use the [IMDb datasets](https://www.imdb.com/interfaces/). Using this additionnal dataset will allow us to have data on more people for each movie. This does not only include actors, but also producers, writers and so on. It will also allow us to have movie rating data, which could prove useful for our cluster analysis.
+
+We merge the two datasets on movie title. The exact procedure is done and described in our data [generation notebook](src/generate_data.ipynb) for both movie metadata (Combine CMU with IMDB) and people (Process the other datasets/People).
+
+The resulting dataset is presented in our descriptive analysis in the [submission notebook](milestone_2.ipynb)
 
 ## Methods
 
