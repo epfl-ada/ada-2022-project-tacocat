@@ -2,6 +2,7 @@ Download and decompress the dataset from [here](http://www.cs.cmu.edu/~ark/perso
 
 It should look like this:
 
+```bash
 cmu_movie_summary_corpus
    ├── character.metadata.tsv
    ├── movie.metadata.tsv
@@ -9,3 +10,4 @@ cmu_movie_summary_corpus
    ├── plot_summaries.txt
    ├── README.md
    └── tvtropes.clusters.txt
+```

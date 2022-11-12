@@ -2,6 +2,7 @@ Download the datasets from [here](https://datasets.imdbws.com/) into this folder
 
 It should look like this:
 
+```bash
 imdb
    ├── name.basics.tsv.gz
    ├── README.md
@@ -9,3 +10,4 @@ imdb
    ├── title.crew.tsv.gz
    ├── title.principals.tsv.gz
    └── title.ratings.tsv.gz
+```
