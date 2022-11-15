@@ -13,6 +13,7 @@ FILENAME_MOVIE_CREW = 'movie_crew'
 FILENAME_MOVIE_PRINCIPALS = 'movie_principals'
 FILENAME_MOVIE_RATINGS = 'movie_ratings'
 FILENAME_PEOPLE = 'people'
+FILENAME_IS_IN_MOVIES = 'is_in_movies'
 
 def load_ethnicities() -> pd.DataFrame:
     '''
@@ -69,3 +70,11 @@ def load_people() -> pd.DataFrame:
     :return: data in a dataframe
     '''
     return pd.read_pickle(PATH_DATA_GEN + FILENAME_PEOPLE)
+
+def load_is_in_movies() -> pd.DataFrame:
+    '''
+    Load the "is in movies" data.
+
+    :return: data in dataframe
+    '''
+    return pd.read_pickle(PATH_DATA_GEN + FILENAME_IS_IN_MOVIES)
