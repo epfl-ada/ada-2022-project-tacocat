@@ -5,10 +5,10 @@
 │   ├── cmu_movie_summary_corpus
 │   └── imdb
 ├── docs
-|   └── instr.md
+│   └── instr.md
 ├── generated
-|   ├── graphs
-|   └── legacy
+│   ├── graphs
+│   └── legacy
 ├── README.md
 ├── requirements.txt
 ├── results
@@ -31,7 +31,7 @@
 - [results](../results/) contains the results from our analysis.
 - [src](../src/) contains the projects code.
 - [src/utils](../src/utils/) contains scripts providing functions that may be useful throughout the project.
-- [temp](../temp/) may be used to store temporary data
+- temp may be used to store temporary data. It is not tracked by git.
 
 ## Repository Usage
 
