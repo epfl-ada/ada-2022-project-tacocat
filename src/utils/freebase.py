@@ -1,5 +1,5 @@
 '''
-File containing functions for manipulating Freebase related stuff
+File containing functions for manipulating Freebase related stuff.
 '''
 
 import requests

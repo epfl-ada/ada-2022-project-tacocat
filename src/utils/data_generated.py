@@ -1,5 +1,7 @@
 '''
-File containing functions for loading the generated data
+File containing functions for loading the generated data.
+
+Everytime data is used for analysis for the data story, it should be loaded using these functions.
 '''
 
 import pandas as pd

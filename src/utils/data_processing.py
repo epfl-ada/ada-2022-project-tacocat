@@ -1,5 +1,5 @@
 '''
-File containing functions useful for data processing and cleaning
+File containing functions useful for data processing and cleaning.
 '''
 
 import pandas as pd

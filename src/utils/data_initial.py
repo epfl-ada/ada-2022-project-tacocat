@@ -1,5 +1,8 @@
 '''
-File containing functions for loading the initial, unprocessed data
+File containing functions for loading the initial, unprocessed data.
+
+This file should be used exclusively for generating data, and never directly for analysis for the data story,
+with exceptions for the EDA done for milestone 2.
 '''
 
 
@@ -97,7 +100,7 @@ def load_cmu_movie_metadata() -> pd.DataFrame:
 
     # fix invalid dates
     df.release_date.replace("1010-12-02", "2010-12-02", inplace=True)
-    
+
     # map runtime of 0 to NaN, since that makes more sense
     map_to_nan(df, 0, ['runtime'])
 
@@ -190,7 +193,7 @@ def load_imdb_title_basics() -> pd.DataFrame:
                'Game-Show', 'Animation,Comedy,Family', 'Game-Show,Reality-TV']
     df.runtime_minutes = df.runtime_minutes.map(
         lambda r: np.NaN if r in badvals else r).astype(pd.Int64Dtype())
-    
+
     # map runtime of 0 to NaN, since that makes more sense
     map_to_nan(df, 0, ['runtime_minutes'])
 

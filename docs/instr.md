@@ -1,16 +1,20 @@
-## Repository Structure and Usage
+## Repository Structure
 
 ```bash
 ├── data
 │   ├── cmu_movie_summary_corpus
 │   └── imdb
 ├── docs
+|   └── instr.md
 ├── generated
+|   ├── graphs
+|   └── legacy
 ├── README.md
 ├── requirements.txt
 ├── results
+│   └── graphs
 ├── src
-│   ├── generate_data.ipynb
+│   ├── eda
 │   └── utils
 │       ├── data_generated.py
 │       ├── data_initial.py
@@ -29,14 +33,17 @@
 - [src/utils](../src/utils/) contains scripts providing functions that may be useful throughout the project.
 - [temp](../temp/) may be used to store temporary data
 
-The essentials to work on the project are:
+## Repository Usage
 
-- [generate_data.ipynb](../src/generate_data.ipynb) contains the pipeline used to generate the data for analysis in the project.
-- [data_generated.py](../src/utils/data_generated.py) contains the functions used to load the data used in the project. This data should only be loaded using those functions.
+- [data_generated.py](../src/utils/data_generated.py) contains the functions used to load the data used in the project. __Only data loaded using these functions should be used for working on the data story.__
 
-## Get initial datasets
+- Any code should be placed in the [source folder](../src/)
 
-If you want to generate data for usage in the project, follow the READMEs in [data](../data/) to download the initial datasets.
+- Any result should be placed in the [results folder](../results/)
+
+## Reproduce data generation
+
+If you want to generate data for usage in the project, follow the READMEs in [data](../data/) to download the initial datasets. Then use the [data generation notebook](../src/generate_data.ipynb) to generate the data.
 
 ## requirements.txt
 
