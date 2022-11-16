@@ -42,13 +42,13 @@ To compute the [clustering coefficient](https://en.wikipedia.org/wiki/Clustering
 
 ### Clustering
 
-Last be not least, we would like to compute the clusters. When building our graph, we ultimately already compute some kind of visual clusters, but we need to eplicitly construct them (since the only information we can retrieve are the positions). In order to have clusters that matches our graph, we will then use the positions from the graph, instead of the usual edges and nodes used for graph clustering. Adding to those positions, we might want to be able to clusters according to potential structure we could come up with during the process. We haven't commited to a specific method yet, but we lean towards unsupervised methods, since our nodes are not labelled. We have selected three methods that seem promising to achieve what we desire. 
+Last be not least, we would like to compute the clusters. When building our graph, we ultimately already compute some kind of visual clusters, but we need to explicitly construct them (since the only information we can retrieve are the positions). In order to have clusters that match our graph, we will then use the positions from the graph, instead of the usual edges and nodes used for graph clustering. Adding to those positions, we might want to be able to cluster according to potential structure we could come up with during the process. We haven't commited to a specific method yet, but we lean towards unsupervised methods, since our nodes are not labelled. We have selected three methods that seem promising to achieve what we desire. 
 
-The first one would be [spectral clustering](https://en.wikipedia.org/wiki/Spectral_clustering). Three main steps can be identified for this technic: construct a similarity graph, project data onto a lower-dimensional space, and cluster the data. Using the positions from our graph, we could create a distance matrix, which would allow use to compute eigenvalues of similarity matrix (derived from distance matrix and degree matrix). One drawback of this method is that it requires the number of clusters, but we could estimate this using k-means with silhouette width as seen in the lectures. Another trick would be projecting the points into a non-linear embedding and analyze the eigenvalues of the Laplacian matrix. This would allow us to deduce the number of clusters present in the data. This would require our similarity graph to be not fully connected. Another drawback is the runtime, which is O(N<sup>3</sup>) without optimization (such as [Fast kernel spectral clustering](https://www.sciencedirect.com/science/article/abs/pii/S0925231217307488))
+The first one would be [spectral clustering](https://en.wikipedia.org/wiki/Spectral_clustering). Three main steps can be identified for this method: construct a similarity graph, project data onto a lower-dimensional space, and cluster the data. Using the positions from our graph, we could create a distance matrix, which would allow us to compute eigenvalues of similarity matrix (derived from distance matrix and degree matrix). One drawback of this method is that it requires the number of clusters, but we could estimate this using k-means with silhouette width as seen in the lectures. Another trick would be projecting the points into a non-linear embedding and analyze the eigenvalues of the Laplacian matrix. This would allow us to deduce the number of clusters present in the data. This would require our similarity graph to be not fully connected. Another drawback is the runtime, which is O(N<sup>3</sup>) without optimization (such as [Fast kernel spectral clustering](https://www.sciencedirect.com/science/article/abs/pii/S0925231217307488))
 
 The second option would be [DBSCAN](https://en.wikipedia.org/wiki/DBSCAN). Since we already have the positions, we could derive the maximum distance between nodes we would set for the algorithm. An advantage is that we don't need to know the number of clusters beforehand. However, we need to be careful when selecting the distance and minimum neighbour required. Also, DBSCAN could detect anomalies in the graph, nodes that are either noise or outliers. We need to be very careful in the interpretation of those nodes should we have any. As seen in class, runtime is O(N log(N)).
 
-Finally, we have [hierarchical clustering](https://en.wikipedia.org/wiki/Hierarchical_clustering). As stated before, we would like to not have the find the number of clusters beforehand. Even if spectral clustering would not allow that, DBSCAN solved this problem. However, DBSCAN is also based on density, and we need to find a good distance parameter to get good results. This option would allow us to solved those two problems. Indeed, hierchical clustering do not require the number of clusters, and we don't have the trouble of setting minimal distance. However, this technic might struggle when facing cluster sizes of vastly different sizes (which seems to be our case by looking at our graph). Moreover, as seen in class, the run time is O(N<sup>3</sup>) without priority queue.
+Finally, we have [hierarchical clustering](https://en.wikipedia.org/wiki/Hierarchical_clustering). As stated before, we would like to not have the find the number of clusters beforehand. Even if spectral clustering would not allow that, DBSCAN solved this problem. However, DBSCAN is also based on density, and we need to find a good distance parameter to get good results. This option would allow us to solved those two problems. Indeed, hierchical clustering does not require the number of clusters, and we don't have the trouble of setting minimal distance. However, this method might struggle when facing cluster sizes of vastly different sizes (which seems to be our case by looking at our graph). Moreover, as seen in class, the run time is O(N<sup>3</sup>) without priority queue.
 
 All those options are featured in the `Scikit-learn` library, should we want to use them as such.
 
@@ -59,29 +59,29 @@ All those options are featured in the `Scikit-learn` library, should we want to 
 - Focusing on homework 2 and ideally finishing it
 - Implement changes on project according to feedback from Milestone 2 (if available)
 
-### week 48
+### Week 48
 
 - If not finished, complete homework 2. 
 - Generate graph with preprocessed data from Milestone 2. It is  important to have a complete graph on all the data. We should be able to visually identify clusters and possible outliers. 
 - Compute clusters.
 - Start data story.
 
-### week 49
+### Week 49
 
 - Analyze/compare clusters. Understand what are the key features of those clusters.
 - Compute outliers and analyze them. Understand what traits makes an outlier and verify if they act as bridges between different clusters. Verify if multiple outliers have shared traits.
 - Update data story accordingly.
 
-### week 50
+### Week 50
 
 - Start data story.
 - Choose a cluster for in-depth anaylsis. Check if there exist clusters within clusters. Do the same with outliers. 
 - Update data story accordingly.
 
-### week 51
+### Week 51
 
 - Finish data story
-- complete and update files for submission.
+- Complete and update files for submission.
 
 ## Team-internal Organization
 
