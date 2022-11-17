@@ -74,7 +74,6 @@ All those options are featured in the `Scikit-learn` library, should we want to 
 
 ### Week 50
 
-- Start data story.
 - Choose a cluster for in-depth anaylsis. Check if there exist clusters within clusters. Do the same with outliers. 
 - Update data story accordingly.
 
