@@ -13,7 +13,7 @@ It's no secret that knowing the right people in the film industry is very import
 - Are there clustering between the people in the film industry?
     - What are common attributes of people in the same cluster? And do we see clusters within clusters? If so, do sensitive attributes such as age, gender and ethnicity have anything to do with it?
     - Which people are connecting clusters? What makes them special?
-- As representation and diversity have more space in conversations, do we see this in the film industry?
+- As representation and diversity have more space in conversations today, do we observer the same awareness in the film industry?
 
 ## Additional Datasets Used
 
