@@ -1,4 +1,4 @@
-# 2022 ADA Project by team TACOCAT
+# Magnets in the Movie Industry 🧲
 
 For information on repository organisation, see the [instructions](docs/instr.md).
 
