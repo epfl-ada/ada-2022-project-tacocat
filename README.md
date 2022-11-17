@@ -56,8 +56,8 @@ All those options are featured in the `Scikit-learn` library, should we want to 
 
 ### Week 47
 
-- Focusing on homework 2 and ideally finishing it
-- Implement changes on project according to feedback from Milestone 2 (if available)
+- Focusing on homework 2 and ideally finishing it.
+- Implement changes on project according to feedback from Milestone 2 (if available).
 
 ### Week 48
 
@@ -80,9 +80,16 @@ All those options are featured in the `Scikit-learn` library, should we want to 
 
 ### Week 51
 
-- Finish data story
+- Finish data story.
 - Complete and update files for submission.
 
-## Team-internal Organization
+## Team-internal Organization for Milestone 2
+Edin: Creating a network graph to explore clusters, defining and explaining methods.
+
+Güneş: Writing abstract, research questions and team organization.
+
+Jonas: Preprocessing data and exploratory data analysis.
+
+Louca: Writing project timeline, defining and explaining methods.
 
 ## Questions for TAs
