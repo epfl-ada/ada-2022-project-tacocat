@@ -54,35 +54,35 @@ All those options are featured in the `Scikit-learn` library, should we want to 
 
 ## Proposed Timeline
 
+E = Edin
+G = Güneş
+L = Louca
+J = Jonas
+
 ### Week 47
 
-- Focusing on homework 2 and ideally finishing it
-- Implement changes on project according to feedback from Milestone 2 (if available)
+- Focusing on homework 2 and ideally finishing it [EGLJ]
+- Implement changes on project according to feedback from Milestone 2 (if available) [EGLJ]
 
 ### Week 48
 
-- If not finished, complete homework 2. 
-- Generate graph with preprocessed data from Milestone 2. It is  important to have a complete graph on all the data. We should be able to visually identify clusters and possible outliers. 
-- Compute clusters.
-- Start data story.
+- If not finished, complete homework 2. [EGLJ]
+- Generate graph with preprocessed data from Milestone 2. It is  important to have a complete graph on all the data. We should be able to visually identify clusters and possible outliers.  [EG]
+- Compute clusters. [L]
+- Start data story. [J]
 
 ### Week 49
 
-- Analyze/compare clusters. Understand what are the key features of those clusters.
-- Compute outliers and analyze them. Understand what traits makes an outlier and verify if they act as bridges between different clusters. Verify if multiple outliers have shared traits.
-- Update data story accordingly.
+- Analyze/compare clusters. Understand what are the key features of those clusters. [EL]
+- Compute outliers and analyze them. Understand what traits makes an outlier and verify if they act as bridges between different clusters. Verify if multiple outliers have shared traits. [GJ]
+- Update data story accordingly. [J]
 
 ### Week 50
 
-- Start data story.
-- Choose a cluster for in-depth anaylsis. Check if there exist clusters within clusters. Do the same with outliers. 
-- Update data story accordingly.
+- Choose a cluster for in-depth anaylsis. Check if there exist clusters within clusters. Do the same with outliers. [EL]
+- Update data story accordingly. [GJ]
 
 ### Week 51
 
-- Finish data story
-- Complete and update files for submission.
-
-## Team-internal Organization
-
-## Questions for TAs
+- Finish data story [EGLJ]
+- Complete and update files for submission. [EGLJ]
