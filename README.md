@@ -82,7 +82,10 @@ All those options are featured in the `Scikit-learn` library, should we want to 
 - Finish data story.
 - Complete and update files for submission.
 
-## Team-internal Organization for Milestone 2
+## Team-internal Organization for
+
+#### Milestone 2
+
 Edin: Creating a network graph to explore clusters, defining and explaining methods.
 
 Güneş: Writing abstract, research questions and team organization.
@@ -91,7 +94,8 @@ Jonas: Preprocessing data and exploratory data analysis.
 
 Louca: Writing project timeline, defining and explaining methods.
 
-## Team-internal Organization for Milestone 3 (Subject to changes)
+#### Milestone 3 (Subject to changes)
+
 Edin: Building the network graph, data visualization and tune clustering.
 
 Güneş: Data story, data visualization and cluster analysis.
