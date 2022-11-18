@@ -82,7 +82,7 @@ All those options are featured in the `Scikit-learn` library, should we want to 
 - Finish data story.
 - Complete and update files for submission.
 
-## Team-internal Organization for
+## Team-internal Organization
 
 #### Milestone 2
 
@@ -94,7 +94,7 @@ Jonas: Preprocessing data and exploratory data analysis.
 
 Louca: Writing project timeline, defining and explaining methods.
 
-#### Milestone 3 (Subject to changes)
+#### Milestone 3 (subject to changes)
 
 Edin: Building the network graph, data visualization and tune clustering.
 
