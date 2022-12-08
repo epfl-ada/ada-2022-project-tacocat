@@ -5,10 +5,14 @@ Everytime data is used for analysis for the data story, it should be loaded usin
 '''
 
 import pandas as pd
+import pickle
 
+# File directories
 PATH_DATA_GEN = '../generated/'
 PATH_DATA_GEN_LEGACY = '../generated/legacy/'
+PATH_GRAPHS = '../generated/graphs/'
 
+# Dataframe filenames
 FILENAME_ETHNICITIES = 'ethnicities'
 FILENAME_MOVIE_METADATA = 'movie_metadata'
 FILENAME_MOVIE_CREW = 'movie_crew'
@@ -16,6 +20,14 @@ FILENAME_MOVIE_PRINCIPALS = 'movie_principals'
 FILENAME_MOVIE_RATINGS = 'movie_ratings'
 FILENAME_PEOPLE = 'people'
 FILENAME_IS_IN_MOVIES = 'is_in_movies'
+
+# Graph related filenames
+FILENAME_GRAPH = '19960101-20120101_graph.pickle'
+FILENAME_POSITIONS = '19960101-20120101_pos.pickle'
+FILENAME_CLUSTER_COEFFICIENT = '19960101-20120101_cluster_coefficient.pickle'
+FILENAME_CLUSTER_DBSCAN = '19960101-20120101_cluster_dbscan.pickle'
+FILENAME_CLUSTER_OPTICS = '19960101-20120101_cluster_optics.pickle'
+
 
 def load_ethnicities() -> pd.DataFrame:
     '''
@@ -80,3 +92,49 @@ def load_is_in_movies() -> pd.DataFrame:
     :return: data in dataframe
     '''
     return pd.read_pickle(PATH_DATA_GEN + FILENAME_IS_IN_MOVIES)
+
+def load_graph():
+    '''
+    Load the graph.
+
+    :return: networkx graph object
+    '''
+    with open(PATH_GRAPHS + FILENAME_GRAPH, 'rb') as handle:
+        return pickle.load(handle)
+
+def load_positions():
+    '''
+    Load the node positions.
+
+    :return: dictionary(person_id : position)
+    '''
+    with open(PATH_GRAPHS + FILENAME_POSITIONS, 'rb') as handle:
+        return pickle.load(handle)
+
+def load_cluster_coefficients():
+    '''
+    Load the clustering coefficient.
+
+    :return: dictionary(person_id : coefficient)
+    '''
+    with open(PATH_GRAPHS + FILENAME_CLUSTER_COEFFICIENT, 'rb') as handle:
+        return pickle.load(handle)
+
+def load_cluster_dbscan():
+    '''
+    Load the dbscan clustering.
+
+    :return: dictionary(person_id : cluster_id)
+    '''
+    with open(PATH_GRAPHS + FILENAME_CLUSTER_DBSCAN, 'rb') as handle:
+        return pickle.load(handle)
+
+def load_cluster_optics():
+    '''
+    Load the optics clustering.
+
+    :return: dictionary(person_id : cluster_id)
+    '''
+    with open(PATH_GRAPHS + FILENAME_CLUSTER_OPTICS, 'rb') as handle:
+        return pickle.load(handle)
+
