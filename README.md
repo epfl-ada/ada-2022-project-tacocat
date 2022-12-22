@@ -6,7 +6,7 @@ The entry point for evaluating our milestone 2 submission is the [milestone 2 no
 
 The entry point for evaluating our milestone 3 submission is the [milestone 3 notebook](milestone_3.ipynb). Note that it is an updated version of the milestone 2 submission.
 
-The data story can be found [here](TODO: ADD LINK TO WEBSITE).
+The data story can be found [here](https://tacocat-ada.github.io/).
 
 ## Abstract
 
