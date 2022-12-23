@@ -98,14 +98,12 @@ Jonas: Preprocessing data and exploratory data analysis.
 
 Louca: Writing project timeline, defining and explaining methods.
 
-#### Milestone 3 (subject to changes)
+#### Milestone 3
 
-Edin: Building the network graph, data visualization and tune clustering.
+Edin: Building the network graph, do clustering, and generating graph visualizations.
 
-Güneş: Data story, data visualization and cluster analysis.
+Güneş: Building the website, and writing the data story.
 
-Jonas: Exploratory data analysis, further data exploration and feature selection.
+Jonas: Analysing outliers, generating visualizations for this part, and writing first draft of this part of the data story.
 
-Louca: Data story, data visualization and cluster analysis.
-
-## Questions for TAs
+Louca: Analysing clusters, and generating visualizations for this part.
