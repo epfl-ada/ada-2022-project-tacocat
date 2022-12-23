@@ -72,6 +72,11 @@ The resulting dataset is presented in our descriptive analysis in the [submissio
     - We plotted their profession and ethnicity information to understand who they are.
     - And finally we selected two of the outliers who were interesting to analyze; A.R. Rahman, the most connected outlier to clusters and Takashi Miike, an outlier mostly connected to other outliers.
 
+### Step 6: Data Story
+- We used Github pages and the Cayman( a Jekyll theme) to create the data story.
+- Since the network plots are rather large, we created an interactive zoom tool by using CSS styles and JavaScript functions (Code source: [W3Schools](https://www.w3schools.com/howto/howto_js_image_magnifier_glass.asp)).
+- In the data story, we discuss our results and the methods mentioned above.
+
 ## Proposed Timeline
 
 | Week         | Tasks |
