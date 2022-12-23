@@ -1,109 +1,92 @@
 # Magnets in the Movie Industry 🧲
 
+## 🗃️ Repository Organization
+
 For information on repository organisation, see the [instructions](docs/instr.md).
 
 The entry point for evaluating our milestone 2 submission is the [milestone 2 notebook](milestone_2.ipynb).
 
 The entry point for evaluating our milestone 3 submission is the [milestone 3 notebook](milestone_3.ipynb). Note that it is an updated version of the milestone 2 submission.
 
-The data story can be found [here](https://tacocat-ada.github.io/).
+## 🌐 Data Story
 
-## Abstract
+For data story click [here](https://tacocat-ada.github.io/) or go to https://tacocat-ada.github.io/
 
-It's no secret that knowing the right people in the film industry is very important to have a successful film career. But who are these people? In this project we will be analysing the acquitances of each person in the industry (actors, directors, writers and so on) to further investigate the existence of clusters of people who know each other, why these clusters exist and who are the key people that bridge different clusters. Our main goal is to create a social map of the film industry. To do so, we will build a graph of relationships with clusters. Then, we will dive into interesting clusters to understand their demographic (age, ethnicity, genre etc.) and the key people who connect clusters. What happens *behind the scenes* in the film industry is usually a mystery, so we want to *reveal the curtain* to understand the dynamics of the industry.
+## 📔 Abstract
 
-## Research Questions
+It's no secret that being in the right social circle the film industry is very important to have a successful film career. In this project we will be analysing the people in the industry (actors, directors, writers, etc.) to further investigate the existence of clusters of people who know each other. Then zoom into the significant clusters to investigate further why these clusters exist, what makes them unique, who are the key people that bridge different clusters and who are left out. We will look at each cluster’s common attributes and tie them into real movie industries. Our main goal is to create a social map of the film industry.
 
-- Are there clustering between the people in the film industry?
-    - What are common attributes of people in the same cluster? And do we see clusters within clusters? If so, do sensitive attributes such as age, gender and ethnicity have anything to do with it?
-    - Which people are connecting clusters? What makes them special?
-- As representation and diversity have more space in conversations today, do we observer the same awareness in the film industry?
 
-## Additional Datasets Used
+## ❔ Research Questions
+
+- Are there clusterings between the people in the film industry?
+    - What are the common attributes of people in the same cluster?
+    - Are there people without a cluster? What makes them unique?
+- As representation and diversity have more space in conversations today, do we observe the same awareness in the film industry?
+    - Do women are employed equally with men?
+    - How diverse each cluster is?
+
+## 📽️ Additional Datasets Used
 
 In addition to the [CMU movie dataset](http://www.cs.cmu.edu/~ark/personas/), we use the [IMDb datasets](https://www.imdb.com/interfaces/). Using this additionnal dataset will allow us to have data on more people for each movie. This does not only include actors, but also producers, writers and so on. It will also allow us to have movie rating data, which could prove useful for our cluster analysis.
 
 We merge the two datasets on movie title. The exact procedure is done and described in our data [generation notebook](src/generate_data.ipynb) for both movie metadata (Combine CMU with IMDB) and people (Process the other datasets/People).
 
-The resulting dataset is presented in our descriptive analysis in the [submission notebook](milestone_2.ipynb)
+The resulting dataset is presented in our descriptive analysis in the [submission notebook](milestone_2.ipynb).
 
-## Methods
+## 🪧 Methods
 
-We used three main methods for our analysis: one for drawing graphs, one for cluster coefficient computation, and one for the clustering.
+### Step 1: Drawing the Network Graph
 
-### Drawing graphs
+- Using Fruchterman-Reingold [force-directed algorithm](https://en.wikipedia.org/wiki/Force-directed_graph_drawing#Methods) since this algorithm emphasize the position of the nodes, assuring as few edge crossings and distance disparities as possible. The algorithm works similarly to the interaction between attractive and repelling forces. The edges between nodes are the springs that pull closer, and the nodes themselves are the object exerting push.
+    - It is worth noting that the algorithm iterates until it reaches an equilibrium, so it can take a long time to finish. In worst cases, it can take up to O(N<sup>3</sup>), although optimization can improve the running time to be O(N<sup>2</sup> log(N)), where N is the number of nodes. It is for this reason that we decided to save a serialized version of the result using `Pickle`. 
+- We used the package `NetworkX` which provides useful tools and functions for complex networks.
 
-Having the concern of a nice and pleasing-way to draw graphs for our data story, we turned our attention to the Fruchterman-Reingold [force-directed algorithm](https://en.wikipedia.org/wiki/Force-directed_graph_drawing#Methods). Those graphs emphasis the position of the nodes, assuring as few edge crossings and distance disparities as possible. The main concept relies on physics, more precisely on attractive and repelling forces, and aim to reach an equilibrium between those forces. The attractive forces are model as spring-like forces, and repelling forces as anti-gravity forces. The edges between nodes are the springs, and the nodes themselves are the object exercing anti-gravity forces. 
+### Step 2: Selecting Clustering Coefficient
 
-Even if those algorithm have undeniable advantages such as flexibilty and simplcity, it is worth noting that the algorithm iterates until it reaches an equilibrium, so it can take a long time to finish. In worst cases, it can take up to O(N<sup>3</sup>), although optimization can improve the running time to be O(N<sup>2</sup> log(N)), where N is the number of nodes. It is for this reason that we decided to save a serialized version of the result using `Pickle`. 
+- To compute the [clustering coefficient](https://en.wikipedia.org/wiki/Clustering_coefficient), which indicates the degree nodes in a graph tend to cluster together, we also used the package `NetworkX`. 
+- Those coefficients would allow use to efficiently compute the clusters and visually seperate the different nodes within the graph (by colors, sizes, and so forth).
 
-We used the package `NetworkX` which provides useful tools and functions for complex networks.
+### Step 3: Clustering
 
-### Clustering Coefficient
+- We used unsupervised methods, since our nodes are not labelled. We initially selected three methods that seem promising to achieve what we desire, they were [spectral clustering](https://en.wikipedia.org/wiki/Spectral_clustering), [DBSCAN](https://en.wikipedia.org/wiki/DBSCAN) and [hierarchical clustering](https://en.wikipedia.org/wiki/Hierarchical_clustering).
+- But in the end, we decided to use [OPTICS](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html), a close relative to DBSCAN which performs better on large datasets than the `Scikit-learn` implementation of others.
+- We only kept the clusters with size more than 400 to be able to generalize well with our analysis.
 
-To compute the [clustering coefficient](https://en.wikipedia.org/wiki/Clustering_coefficient), which indicates the degree nodes in a graph tend to cluster together, we also used the package `NetworkX`. Those coefficients would allow use to efficiently compute the clusters and visually seperate the different nodes within the graph (by colors, sizes, and so forth).
+### Step 4: Cluster Analysis
+- With this step, we created plots to answer our research questions on clusters and their unique features. In this step we used `matplotlib.pyplot` library to visualize our data.We always dropped NaN values in our analysis.
 
+- **Are there clusterings between the people in the film industry?**
+    - With the clustered graph, we know that the answer is yes.
 
-### Clustering
+- **What are the common attributes of people in the same cluster? As representation and diversity have more space in conversations today, do we observe the same awareness in the film industry? Do women are employed equally with men? How diverse each cluster is?**
+    - On an initial analysis, we saw that people that could be from the same ethnicity was clustered together. Thus we first plotted ethnicity values for each cluster.
+    - We saw that ethnicities differ between each cluster, thus we named the clusters by the highest occuring ethnicity values.
+    - Then, we plotted the genre, profession, age and gender distribution of each cluster to understand the attributes of each cluster. We also presented information from news articles to support our results.
 
-Last be not least, we would like to compute the clusters. When building our graph, we ultimately already compute some kind of visual clusters, but we need to explicitly construct them (since the only information we can retrieve are the positions). In order to have clusters that match our graph, we will then use the positions from the graph, instead of the usual edges and nodes used for graph clustering. Adding to those positions, we might want to be able to cluster according to potential structure we could come up with during the process. We haven't commited to a specific method yet, but we lean towards unsupervised methods, since our nodes are not labelled. We have selected three methods that seem promising to achieve what we desire. 
-
-The first one would be [spectral clustering](https://en.wikipedia.org/wiki/Spectral_clustering). Three main steps can be identified for this method: construct a similarity graph, project data onto a lower-dimensional space, and cluster the data. Using the positions from our graph, we could create a distance matrix, which would allow us to compute eigenvalues of similarity matrix (derived from distance matrix and degree matrix). One drawback of this method is that it requires the number of clusters, but we could estimate this using k-means with silhouette width as seen in the lectures. Another trick would be projecting the points into a non-linear embedding and analyze the eigenvalues of the Laplacian matrix. This would allow us to deduce the number of clusters present in the data. This would require our similarity graph to be not fully connected. Another drawback is the runtime, which is O(N<sup>3</sup>) without optimization (such as [Fast kernel spectral clustering](https://www.sciencedirect.com/science/article/abs/pii/S0925231217307488))
-
-The second option would be [DBSCAN](https://en.wikipedia.org/wiki/DBSCAN). Since we already have the positions, we could derive the maximum distance between nodes we would set for the algorithm. An advantage is that we don't need to know the number of clusters beforehand. However, we need to be careful when selecting the distance and minimum neighbour required. Also, DBSCAN could detect anomalies in the graph, nodes that are either noise or outliers. We need to be very careful in the interpretation of those nodes should we have any. As seen in class, runtime is O(N log(N)).
-
-Finally, we have [hierarchical clustering](https://en.wikipedia.org/wiki/Hierarchical_clustering). As stated before, we would like to not have the find the number of clusters beforehand. Even if spectral clustering would not allow that, DBSCAN solved this problem. However, DBSCAN is also based on density, and we need to find a good distance parameter to get good results. This option would allow us to solved those two problems. Indeed, hierchical clustering does not require the number of clusters, and we don't have the trouble of setting minimal distance. However, this method might struggle when facing cluster sizes of vastly different sizes (which seems to be our case by looking at our graph). Moreover, as seen in class, the run time is O(N<sup>3</sup>) without priority queue.
-
-All those options are featured in the `Scikit-learn` library, should we want to use them as such.
+### Step 5: Outlier and Key People Analysis
+- **Are there people without a cluster? What makes them unique?**
+    - We saw that more than half of the people were not placed in a cluster, thus we analyzed them further.
+    - We plotted the ECDF analysis from `Seaborn` library to understand the connectivity of outliers to each other and clusters.
+    - We kept the top 1% of outliers (in terms of connectivity) to ensure a logical analysis.
+    - We plotted their profession and ethnicity information to understand who they are.
+    - And finally we selected two of the outliers who were interesting to analyze; A.R. Rahman, the most connected outlier to clusters and Takashi Miike, an outlier mostly connected to other outliers.
 
 ## Proposed Timeline
 
-### Week 47
-
-- Focusing on homework 2 and ideally finishing it.
-- Implement changes on project according to feedback from Milestone 2 (if available).
-
-### Week 48
-
-- If not finished, complete homework 2. 
-- Generate graph with preprocessed data from Milestone 2. It is  important to have a complete graph on all the data. We should be able to visually identify clusters and possible outliers. 
-- Compute clusters.
-- Start data story.
-
-### Week 49
-
-- Analyze/compare clusters. Understand what are the key features of those clusters.
-- Compute outliers and analyze them. Understand what traits makes an outlier and verify if they act as bridges between different clusters. Verify if multiple outliers have shared traits.
-- Update data story accordingly.
-
-### Week 50
-
-- Choose a cluster for in-depth anaylsis. Check if there exist clusters within clusters. Do the same with outliers. 
-- Update data story accordingly.
-
-### Week 51
-
-- Finish data story.
-- Complete and update files for submission.
+| Week         | Tasks |
+|--------------|:-----|
+| Week 47      |  Implement changes on project according to feedback from Milestone 2. Start Homework 2. |
+| Week 48      |  Generate graph with preprocessed data from Milestone 2. Computer clusters, visualize clusters and possible outliers. Finish Homework 2.|
+| Week 49      |  Analyze/compare clusters. Understand what are the key features of those clusters. Compute outliers and analyze them. Understand what traits makes an outlier and verify if they act as bridges between different clusters. Verify if multiple outliers have shared traits. |
+| Week 50      |  Start data story, in-depth analysis of clusters and outliers. |
+| Week 51      |  Finish data story, finalize repository for submission. |
 
 ## Team-internal Organization
 
-#### Milestone 2
-
-Edin: Creating a network graph to explore clusters, defining and explaining methods.
-
-Güneş: Writing abstract, research questions and team organization.
-
-Jonas: Preprocessing data and exploratory data analysis.
-
-Louca: Writing project timeline, defining and explaining methods.
-
-#### Milestone 3
-
-Edin: Building the network graph, do clustering, and generating graph visualizations.
-
-Güneş: Building the website, and writing the data story.
-
-Jonas: Analysing outliers, generating visualizations for this part, and writing first draft of this part of the data story.
-
-Louca: Analysing clusters, and generating visualizations for this part.
+| Member Name  | Tasks |
+|--------------|:-----|
+| Edin         |  Defining and writing methods, building network graphs, clustering, and generating graph visualizations. |
+| Güneş      |  Writing abstract, organization and data story, building the website, and updating README for M3. |
+| Jonas      |  EDA, analysing outliers and visualization, and writing first draft of this part of the data story. |
+| Louca      |  Defining and writing methods, creating project timeline, analysing clusters and visualizations. |
