@@ -38,7 +38,7 @@ The resulting dataset is presented in our descriptive analysis in the [submissio
 
 ### Step 1: Drawing the Network Graph
 
-- Using Fruchterman-Reingold [force-directed algorithm](https://en.wikipedia.org/wiki/Force-directed_graph_drawing#Methods) since this algorithm emphasize the position of the nodes, assuring as few edge crossings and distance disparities as possible. The algorithm works similarly to the interaction between attractive and repelling forces. The edges between nodes are the springs that pull closer, and the nodes themselves are the object exerting push.
+- We used Fruchterman-Reingold [force-directed algorithm](https://en.wikipedia.org/wiki/Force-directed_graph_drawing#Methods) since this algorithm emphasizes the position of the nodes, assuring as few edge crossings and distance disparities as possible. The algorithm works similarly to the interaction between attractive and repelling forces. The edges between nodes are the springs that pull closer, and the nodes themselves are the object exerting push.
     - It is worth noting that the algorithm iterates until it reaches an equilibrium, so it can take a long time to finish. In worst cases, it can take up to O(N<sup>3</sup>), although optimization can improve the running time to be O(N<sup>2</sup> log(N)), where N is the number of nodes. It is for this reason that we decided to save a serialized version of the result using `Pickle`. 
 - We used the package `NetworkX` which provides useful tools and functions for complex networks.
 
@@ -54,7 +54,7 @@ The resulting dataset is presented in our descriptive analysis in the [submissio
 - We only kept the clusters with size more than 400 to be able to generalize well with our analysis.
 
 ### Step 4: Cluster Analysis
-- With this step, we created plots to answer our research questions on clusters and their unique features. In this step we used `matplotlib.pyplot` library to visualize our data.We always dropped NaN values in our analysis.
+- With this step, we created plots to answer our research questions on clusters and their unique features. In this step we used `matplotlib.pyplot` library to visualize our data. We always dropped NaN values in our analysis.
 
 - **Are there clusterings between the people in the film industry?**
     - With the clustered graph, we know that the answer is yes.
