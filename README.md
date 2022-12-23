@@ -24,7 +24,7 @@ It's no secret that being in the right social circle the film industry is very i
     - Are there people without a cluster? What makes them unique?
 - As representation and diversity have more space in conversations today, do we observe the same awareness in the film industry?
     - Do women are employed equally with men?
-    - How diverse each cluster is?
+    - How diverse is each cluster?
 
 ## 📽️ Additional Datasets Used
 
@@ -59,7 +59,7 @@ The resulting dataset is presented in our descriptive analysis in the [submissio
 - **Are there clusterings between the people in the film industry?**
     - With the clustered graph, we know that the answer is yes.
 
-- **What are the common attributes of people in the same cluster? As representation and diversity have more space in conversations today, do we observe the same awareness in the film industry? Do women are employed equally with men? How diverse each cluster is?**
+- **What are the common attributes of people in the same cluster? As representation and diversity have more space in conversations today, do we observe the same awareness in the film industry? Do women are employed equally with men? How diverse is each cluster?**
     - On an initial analysis, we saw that people that could be from the same ethnicity was clustered together. Thus we first plotted ethnicity values for each cluster.
     - We saw that ethnicities differ between each cluster, thus we named the clusters by the highest occuring ethnicity values.
     - Then, we plotted the genre, profession, age and gender distribution of each cluster to understand the attributes of each cluster. We also presented information from news articles to support our results.
@@ -77,7 +77,7 @@ The resulting dataset is presented in our descriptive analysis in the [submissio
 - Since the network plots are rather large, we created an interactive zoom tool by using CSS styles and JavaScript functions (Code source: [W3Schools](https://www.w3schools.com/howto/howto_js_image_magnifier_glass.asp)).
 - In the data story, we discuss our results and the methods mentioned above.
 
-## Proposed Timeline
+## 📅 Proposed Timeline
 
 | Week         | Tasks |
 |--------------|:-----|
@@ -87,7 +87,7 @@ The resulting dataset is presented in our descriptive analysis in the [submissio
 | Week 50      |  Start data story, in-depth analysis of clusters and outliers. |
 | Week 51      |  Finish data story, finalize repository for submission. |
 
-## Team-internal Organization
+## ⚙️ Team-internal Organization
 
 | Member Name  | Tasks |
 |--------------|:-----|
